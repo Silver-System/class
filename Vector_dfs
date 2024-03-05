@@ -1,3 +1,74 @@
+package collections;
+
+import java.util.*;
+
+public class dfs1 {
+
+private Vector<Integer> discoveredTime;
+
+ private Vector<Integer> finishedTime;
+
+ private Vector<Integer> parent;
+
+ private Vector<String> colour;
+
+ private Vector<Integer> g[];
+
+ private int vertexCount;
+
+ private HashSet<Integer> vertices;
+
+ private int time;
+
+public dfs1(int cnt) {
+
+this.vertexCount = cnt;
+
+//this.vertexCount = vertexCount;
+
+ discoveredTime = new Vector<>();
+
+ finishedTime = new Vector<>();
+
+ parent = new Vector<>();
+
+ colour = new Vector<>();
+
+ discoveredTime.setSize(vertexCount);
+
+ finishedTime.setSize(vertexCount);
+
+ parent.setSize(vertexCount);
+
+ colour.setSize(vertexCount);
+
+ g = new Vector[ vertexCount];
+
+ vertices = new HashSet<>();
+
+ for (int i = 0; i < vertexCount; i++)
+
+ g[i] = new Vector<>();
+
+}
+
+private void addEdge(int source, int destination) {
+
+ g[source].add(destination);
+
+ vertices.add(source);
+
+ vertices.add(destination);
+
+}
+
+private void dfs2() {
+
+ Collections.fill(parent, null);
+
+ Collections.fill(discoveredTime, Integer.MAX_VALUE);
+
+ Collections.fill(colour, "white");
 colour.set(0, "grey");
 
  time = 0;
