@@ -1,0 +1,74 @@
+package traversal;
+
+import java.util.LinkedList;
+
+public class GraphAL_bfs {
+
+	class Edge{
+		public int dest;
+		public int cost;    	
+
+	    public Edge(int dst,int cost) {
+		    dest=dst;
+		    this.cost=cost;
+	    }
+	}
+	    int count;
+	    public LinkedList <LinkedList<Edge>>Adj;
+	    
+	    public GraphAL_bfs(int cnt) {
+	    	count=cnt;
+	    	Adj=new LinkedList<LinkedList<Edge>>();
+	    	for (int j=0;j<cnt;j++) {
+	    		Adj.add(new LinkedList<Edge>());
+	    		
+	    	}
+	    	
+	    }
+	    public void addDirectedEdge(int source,int dest,int cost) {
+	        Edge edge=new Edge(dest,cost);
+	        Adj.get(source).add(edge);
+	    }
+	    public void addDirectedEdge(int source,int dest) {
+	    	addDirectedEdge(source,dest,1);
+	    }
+	    public void addUndirectedEdge(int source,int dest,int cost) {
+	    	addDirectedEdge(source,dest,cost);
+	    	addDirectedEdge(dest,source,cost);
+	    }
+	    public void addUndirectedEdge(int source,int dest) {
+	    	addUndirectedEdge(source,dest,1);
+	    }
+	    public void print() {
+	    	for(int i=0;i<count;i++) {
+	    		LinkedList<Edge>ad=Adj.get(i);
+	    		System.out.println("\n Vertex "+i+" is connected to: ");
+	    		for(Edge adn:ad) {
+	    			System.out.println("("+adn.dest+","+adn.cost+")");
+	    		}
+	    	}
+	    }
+
+	public static boolean bfs(GraphAL_bfs gph,int source,int target) {
+		int count=gph.count;
+		boolean visited[]=new boolean[count];
+		LinkedList<Integer> que=new LinkedList<Integer>();
+		que.add(source);
+		visited[source]=true;
+		while(que.isEmpty()==false) {
+			int curr=que.remove();
+			LinkedList<Edge>ad1=gph.Adj.get(curr);
+			for(Edge adn:ad1) {
+				if(visited[adn.dest]==false) {
+					
+				}
+		    }
+			
+	   }
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
