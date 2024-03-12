@@ -84,20 +84,43 @@ public class Prim_MST {
 	        for(int i=0;i<count;i++) {
 	        	if(dist[i]==Integer.MAX_VALUE) {
 	        		output+=("("+i+", Unreachable)");
+	        		isMst=false;
 	        	}
+	        	else if(previous[i]!=1){
+	        		output+=("("+previous[i]+"-->"+"@"+i+")");
+	        		sum+=dist[i];
+	        	}
+	        }
+	        if(isMst) {
+	        	System.out.println(output);
+	        	System.out.println("Total Output cost: "+sum);
+	        }
+	        else {
+	        	System.out.println("Can't Get A spanning Tree");
 	        }
 	    }
 
 		public static void main(String[] args) {
 			// TODO Auto-generated method stub
 		
-			for(int i=0;i<5;i++) {
-				for(int j=i+1;j<5;j++) {
-					
-					    //gph.addUndirectedEdge(i,j,1);
-				}
-			}
-			//gph.print();
+			Prim_MST gph=new Prim_MST(9);
+			gph.addUndirectedEdge(0, 1, 4);
+			gph.addUndirectedEdge(1, 2, 8);
+			gph.addUndirectedEdge(2, 3, 7);
+			gph.addUndirectedEdge(3, 4, 9);
+			gph.addUndirectedEdge(4, 5, 10);
+			gph.addUndirectedEdge(5, 6, 2);
+			gph.addUndirectedEdge(6, 7, 1);
+			gph.addUndirectedEdge(0, 7, 8);
+			gph.addUndirectedEdge(1, 7, 11);
+			gph.addUndirectedEdge(2, 8, 2);
+			gph.addUndirectedEdge(2, 5, 4);
+			gph.addUndirectedEdge(3, 5, 14);
+			gph.addUndirectedEdge(8, 6, 6);
+			gph.addUndirectedEdge(8, 7, 7);
+			//gph.addUndirectedEdge(0, 0, 0);
+			gph.primMst();
+			
 
 		}
 
